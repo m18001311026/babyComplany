@@ -27,7 +27,7 @@ NavigationControl *ctr;
     self.window = nil;
     [super dealloc];
 }
-
+//change by 秒李庄
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     delegate = self;
     
