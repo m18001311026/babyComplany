@@ -13,6 +13,9 @@
 #import "ConfManager.h"
 #import <ShareSDK/ShareSDK.h>
 #import "SplashViewController.h"
+#include "Appdate.h"
+
+
 
 AppDelegate *delegate;
 NavigationControl *ctr;
@@ -47,14 +50,17 @@ NavigationControl *ctr;
     [ctr pushViewController:rootCtr animation:ViewSwitchAnimationNone];
     [rootCtr release];
     
-    //[[ConfManager me] setSession:nil];
-//    if (![[ConfManager me] getSession]) {
-//        WelcomeViewController *welVC = [[WelcomeViewController alloc] init];
-//        [ctr pushViewController:welVC animation:ViewSwitchAnimationNone];
-//        [welVC release];
-//    }
+
+    
+    NSString *urlStr = @"https://itunes.apple.com/lookup?id=1022761408";
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    [NSURLConnection connectionWithRequest:req delegate:self];
+
+    
     
     NSString *version = [ConfManager getCurrentVersion];
+
     if (![SPLASH_VER isEqualToString:version]) {
         SplashViewController *sCtr = [[SplashViewController alloc] init];
         [ctr pushViewController:sCtr animation:ViewSwitchAnimationNone];
@@ -63,12 +69,39 @@ NavigationControl *ctr;
         SPLASH_VER_WRITE(version);
         USER_DEFAULT_SAVE;
     }
-
+    //https://itunes.apple.com/cn/app/id1022761408?mt=8
+    
+    
     [self.window makeKeyAndVisible];
 
     return YES;
 }
 
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+   
+    NSError *error;
+    
+    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+    NSDictionary *appInfo = (NSDictionary*)json ;
+
+    NSString * version = [[[appInfo objectForKey:@"results"] objectAtIndex:0] objectForKey:@"version"];
+     NSString *version1 = [ConfManager getCurrentVersion];
+
+    
+    if ([self updateFlagWithAPPversion:version1 AndSerVersion:version]) {
+        UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"升级提示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alertView show];
+    }
+
+    
+}
+
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/id1022761408"]];
+    }
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -89,6 +122,42 @@ NavigationControl *ctr;
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+-(BOOL)updateFlagWithAPPversion:(NSString *)appVersion AndSerVersion:(NSString*)serVersion{
+    
+    NSArray * SerVersionArray = [serVersion componentsSeparatedByString:@"."];
+    NSArray * AppVersionArray = [appVersion componentsSeparatedByString:@"."];
+    
+    if ([AppVersionArray[0] integerValue]>=[SerVersionArray[0] integerValue]) {
+        if([AppVersionArray[0] integerValue] == [SerVersionArray[0] integerValue]){
+            if ([AppVersionArray[1] integerValue]>=[SerVersionArray[1] integerValue]) {
+                if([AppVersionArray[1] integerValue]==[SerVersionArray[1] integerValue]){
+                    if([AppVersionArray[2] integerValue]>=[SerVersionArray[2] integerValue]){
+                        //不升级
+                        return NO;
+                    }else{
+                        //升级
+                        return YES;
+                    }
+                }else{
+                    //不升级
+                    return NO;
+                }
+            }else{
+                //升级
+                return YES;
+            }
+        }else{
+            //不升级
+            return NO;
+        }
+    }else{
+        //升级
+        return YES;
+    }
+    
 }
 
 

@@ -266,10 +266,10 @@
              callback:^(NSString *url, UIImage *image) {
                  [[ShareManager me] showShareMenuWithTitle:@"变变变分享"
                                                    content:[NSString stringWithFormat:
-                                                            @"有趣的作品分享 http://115.28.136.139:8090/CreationApp/share/find.do?productionId=%ld&pageNow=1", galleryId]
+                                                            @"有趣的作品分享 http://www.huibenyuanchuang.com:8090/CreationApp/share/find.do?productionId=%ld&pageNow=1", galleryId]
                                                      image:image
                                                    pageUrl:[NSString stringWithFormat:
-                                                            @"http://115.28.136.139:8090/CreationApp/share/find.do?productionId=%ld&pageNow=1", galleryId]
+                                                            @"http://www.huibenyuanchuang.com:8090/CreationApp/share/find.do?productionId=%ld&pageNow=1", galleryId]
                                                   soundUrl:nil];
              }];
     }

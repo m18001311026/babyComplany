@@ -62,6 +62,7 @@
 		6E6F68491B61116F00C203EB /* collection.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E6F68481B61116F00C203EB /* collection.png */; };
 		6E6F684C1B61120900C203EB /* collectionSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E6F684A1B61120900C203EB /* collectionSelected.png */; };
 		6E6F684D1B61120900C203EB /* likeSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E6F684B1B61120900C203EB /* likeSelected.png */; };
+		6E77F4801BD927790077811D /* Appdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E77F47F1BD927790077811D /* Appdate.m */; };
 		6E8FB0DD1B7F680800E6AB40 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E8FB0DB1B7F680800E6AB40 /* down.png */; };
 		6E8FB0DE1B7F680800E6AB40 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E8FB0DC1B7F680800E6AB40 /* up.png */; };
 		6E8FB0E41B7F6BB600E6AB40 /* aaa1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E8FB0DF1B7F6BB600E6AB40 /* aaa1.png */; };
@@ -403,6 +404,8 @@
 		6E6F68481B61116F00C203EB /* collection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collection.png; sourceTree = "<group>"; };
 		6E6F684A1B61120900C203EB /* collectionSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionSelected.png; sourceTree = "<group>"; };
 		6E6F684B1B61120900C203EB /* likeSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeSelected.png; sourceTree = "<group>"; };
+		6E77F47E1BD927780077811D /* Appdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appdate.h; sourceTree = "<group>"; };
+		6E77F47F1BD927790077811D /* Appdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appdate.m; sourceTree = "<group>"; };
 		6E8FB0DB1B7F680800E6AB40 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		6E8FB0DC1B7F680800E6AB40 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
 		6E8FB0DF1B7F6BB600E6AB40 /* aaa1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aaa1.png; path = baby.xcodeproj/aaa1.png; sourceTree = "<group>"; };
@@ -1562,6 +1565,8 @@
 				C2FB7DE518C3890F006C687E /* Resource */,
 				C28219D9189FDD6500807E71 /* AppDelegate.h */,
 				C28219DA189FDD6500807E71 /* AppDelegate.m */,
+				6E77F47E1BD927780077811D /* Appdate.h */,
+				6E77F47F1BD927790077811D /* Appdate.m */,
 				C28219DC189FDD6500807E71 /* Images.xcassets */,
 				C28219D1189FDD6500807E71 /* Supporting Files */,
 			);
@@ -2220,6 +2225,7 @@
 				C224E9C918D6204800BB627A /* UI.m in Sources */,
 				C2DC03C518EB3D0B006B65DE /* ImageDetailView.m in Sources */,
 				C26C1C911B526317002B1917 /* GalleryPopViewController.m in Sources */,
+				6E77F4801BD927790077811D /* Appdate.m in Sources */,
 				C247B27C18D7600D004D7526 /* GComment.m in Sources */,
 				C224E9B918D6044400BB627A /* ImageTask.m in Sources */,
 				C224EA1218D620E300BB627A /* TabbarSubviewController.m in Sources */,
@@ -2477,8 +2483,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: shuai yang (EQEK54G2W7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuai yang (EQEK54G2W7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/library/ShareSDK/Connection",
@@ -2510,7 +2516,7 @@
 					"$(PROJECT_DIR)/library/MobFrame/extends/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1406d15b-2f56-4c97-89fb-920a458fffa1";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv6 arm64";
 				WRAPPER_EXTENSION = app;
@@ -2556,7 +2562,7 @@
 					"$(PROJECT_DIR)/library/MobFrame/extends/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "af7623b4-9d70-4e2a-bcfe-62acbfba81e7";
+				PROVISIONING_PROFILE = "05c4f9b7-f81b-4d57-8f73-2d85abfe9dd3";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv6 arm64";
 				WRAPPER_EXTENSION = app;
